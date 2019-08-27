@@ -28,7 +28,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -63,6 +62,25 @@ namespace VPKSoft.Utils
         /// The full path of the file's location.
         /// </summary>
         public string PathFull { get; set; }
+
+        /// <summary>
+        /// Creates a new <see cref="FileEnumeratorFileEntry"/> class instance from a given <paramref name="fileName"/>.
+        /// </summary>
+        /// <param name="fileName">The name and the path of the file.</param>
+        /// <returns>An instance to a <see cref="FileEnumeratorFileEntry"/> class with file details.</returns>
+        public static FileEnumeratorFileEntry FromFileName(string fileName)
+        {
+            return new FileEnumeratorFileEntry
+            {
+                FileName = System.IO.Path.GetFileName(fileName), // .. so the file name..
+                FileNameWithPath = fileName, // .. and the file name with path..
+                FileNameNoExtension =
+                    System.IO.Path
+                        .GetFileNameWithoutExtension(fileName), // .. and the file without path and without extension..
+                Path = new DirectoryInfo(System.IO.Path.GetDirectoryName(fileName)).Name, // .. and the non-full path..
+                PathFull = System.IO.Path.GetDirectoryName(fileName) // .. and the full path..
+            };
+        }
     }
 
     /// <summary>
@@ -79,6 +97,20 @@ namespace VPKSoft.Utils
         /// The full path of the file's location.
         /// </summary>
         public string PathFull { get; set; }
+
+        /// <summary>
+        /// Creates a new <see cref="FileEnumeratorFileEntry"/> class instance from a given <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to use.</param>
+        /// <returns>An instance to a <see cref="FileEnumeratorDirectoryEntry"/> class with the path details.</returns>
+        public static FileEnumeratorDirectoryEntry FromPath(string path)
+        {
+            return new FileEnumeratorDirectoryEntry
+            {
+                Path = new DirectoryInfo(path).Name, // .. so the non-full path..
+                PathFull = path // .. and the full path..
+            };
+        }
     }
 
     /// <summary>
