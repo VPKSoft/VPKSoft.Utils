@@ -24,11 +24,7 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 
 namespace VPKSoft.Utils
@@ -41,30 +37,70 @@ namespace VPKSoft.Utils
         /// <summary>
         /// A static list to hold the created mutexes.
         /// </summary>
-        private static List<Mutex> mutexes = new List<Mutex>();
+        // ReSharper disable once InconsistentNaming
+        private static readonly List<Mutex> mutexes = new List<Mutex>();
 
         /// <summary>
         /// Checks if an application with a given unique string is already running.
         /// </summary>
         /// <param name="uniqueID">An (assumed) unique ID to use for the check.</param>
         /// <returns>True if an application with a given unique string is already running, otherwise false.</returns>
+        // ReSharper disable once InconsistentNaming
         public static bool CheckIfRunning(string uniqueID)
         {
-            Mutex mutex;
-
             try
             {
-                mutex = Mutex.OpenExisting(uniqueID);
-                if (mutex != null)
-                {
-                    return true;
-                }
-                return false;
+                Mutex.OpenExisting(uniqueID);
+                return true;
             }
             catch
             {
-                mutex = new Mutex(true, uniqueID);
+                var mutex = new Mutex(true, uniqueID);
                 mutexes.Add(mutex);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Disposes a mutex reserved by an application if one exists in the internal collection.
+        /// </summary>
+        /// <param name="uniqueID">An (assumed) unique ID for the mutex to dispose of.</param>
+        // ReSharper disable once InconsistentNaming
+        public static void DisposeMutexByName(string uniqueID)
+        {
+            try
+            {
+                var mutex = Mutex.OpenExisting(uniqueID);
+                int index = mutexes.IndexOf(mutex);
+                if (index != -1)
+                {
+                    using (mutex)
+                    {
+                        mutexes.RemoveAt(index);
+                    }
+                }
+            }
+            catch
+            {
+                // there is no mutex with a given name..
+            }
+        }
+
+        /// <summary>
+        /// Checks if an application with a given unique string is already running but doesn't create a new <see cref="Mutex"/> with the given <paramref name="uniqueID"/> name.
+        /// </summary>
+        /// <param name="uniqueID">An (assumed) unique ID to use for the check.</param>
+        /// <returns>True if an application with a given unique string is already running, otherwise false.</returns>
+        // ReSharper disable once InconsistentNaming
+        public static bool CheckIfRunningNoAdd(string uniqueID)
+        {
+            try
+            {
+                Mutex.OpenExisting(uniqueID);
+                return true;
+            }
+            catch
+            {
                 return false;
             }
         }
