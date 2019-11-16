@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
     <id>$id$</id>
@@ -7,12 +7,15 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://www.vpksoft.net/2015-03-31-13-33-28/libraries/vpksoft-utils</projectUrl>
-    <iconUrl>https://www.vpksoft.net/site/VPKSoft.ico</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added additional methods for the AppRunning class.</releaseNotes>
-    <copyright>Copyright © VPKSoft 2018</copyright>
+    <releaseNotes>Added binary serialization.</releaseNotes>
+    <copyright>Copyright © VPKSoft 2019</copyright>
     <tags>Utilities VPKSoft vnml serialization helper</tags>
     <license type="expression">LGPL-3.0-or-later</license>
+    <icon>vpksoft_logo.png</icon>
   </metadata>
+  <files>
+    <file src="vpksoft_logo.png" target="" />
+  </files>
 </package>

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AppRunning.cs" />
     <Compile Include="BasicSecurity.cs" />
+    <Compile Include="BinarySerializationContainer.cs" />
     <Compile Include="BuiltInWindowsAccountsLocalize.cs" />
     <Compile Include="Bytes.cs" />
     <Compile Include="ClArgs.cs" />

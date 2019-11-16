@@ -27,6 +27,7 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Xml.Serialization;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 
 namespace VPKSoft.Utils
@@ -194,5 +195,74 @@ namespace VPKSoft.Utils
                 return xmlSerializer.Deserialize(stringReader);
             }
         }
+
+        /// <summary>
+        /// Serializes the given object to a binary data.
+        /// </summary>
+        /// <typeparam name="T">The object to serialize.</typeparam>
+        /// <param name="toSerialize">The object to serialize into a binary data.</param>
+        /// <returns>An instance to a <see cref="BinarySerializationContainer"/> containing the serialized data if successful; otherwise null.</returns>
+        public static BinarySerializationContainer SerializeObjectBinary<T>(this T toSerialize)
+        {
+            try
+            {
+                var binaryFormatter = new BinaryFormatter();
+                using (var memoryStream = new MemoryStream())
+                {
+                    binaryFormatter.Serialize(memoryStream, toSerialize);
+                    return new BinarySerializationContainer(memoryStream);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Deserializes the <see cref="BinarySerializationContainer"/> instance from binary data to an object instance.
+        /// </summary>
+        /// <typeparam name="T">The object type</typeparam>
+        /// <param name="container">The container.</param>
+        /// <returns>The <paramref name="container"/> serialized to an object of type of T if successful; otherwise default(T) is returned.</returns>
+        public static T DeserializeObjectBinary<T>(this BinarySerializationContainer container)
+        {
+            var result = DeserializeObjectBinary(container);
+            if (result == null)
+            {
+                return default;
+            }
+
+            try
+            {
+                return (T) result;
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        /// <summary>
+        /// Deserializes the <see cref="BinarySerializationContainer"/> instance from binary data to an object instance.
+        /// </summary>
+        /// <param name="container">The <see cref="BinarySerializationContainer"/> class instance containing the binary data.</param>
+        /// <returns>System.Object if successful; otherwise null.</returns>
+        public static object DeserializeObjectBinary(this BinarySerializationContainer container)
+        {
+            try
+            {
+                var binaryFormatter = new BinaryFormatter();
+                using (var memoryStream = new MemoryStream(container.BinaryData))
+                {
+                    return binaryFormatter.Deserialize(memoryStream);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }
