@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\VPKSoft.Utils.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />

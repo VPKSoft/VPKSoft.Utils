@@ -244,6 +244,27 @@ namespace VPKSoft.Utils
         }
 
         /// <summary>
+        /// Deserializes a string assumed to be a base-64 encoded string containing the object's binary data.
+        /// </summary>
+        /// <param name="base64">The base-64 encoded binary data.</param>
+        /// <returns>System.Object if successful; otherwise null.</returns>
+        public static object DeserializeObjectBinary(this string base64)
+        {
+            return DeserializeObjectBinary(new BinarySerializationContainer(base64));
+        }
+
+        /// <summary>
+        /// Deserializes a string assumed to be a base-64 encoded string containing the object's binary data.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="base64">The base-64 encoded binary data.</param>
+        /// <returns>The base-64 encoded binary data serialized to an object of type of T if successful; otherwise default(T) is returned.</returns>
+        public static T DeserializeObjectBinary<T>(this string base64)
+        {
+            return DeserializeObjectBinary<T>(new BinarySerializationContainer(base64));
+        }
+
+        /// <summary>
         /// Deserializes the <see cref="BinarySerializationContainer"/> instance from binary data to an object instance.
         /// </summary>
         /// <param name="container">The <see cref="BinarySerializationContainer"/> class instance containing the binary data.</param>
@@ -263,6 +284,5 @@ namespace VPKSoft.Utils
                 return null;
             }
         }
-
     }
 }

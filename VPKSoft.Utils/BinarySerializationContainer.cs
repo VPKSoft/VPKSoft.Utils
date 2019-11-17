@@ -24,6 +24,7 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
+using System;
 using System.IO;
 
 namespace VPKSoft.Utils
@@ -53,6 +54,21 @@ namespace VPKSoft.Utils
         {
             BinaryData = binaryData;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BinarySerializationContainer"/> class with a binary data as base-64 digits, to an equivalent 8-bit unsigned integer array.
+        /// </summary>
+        /// <param name="base64">A base-64 encoded string containing the serialized object data.</param>
+        public BinarySerializationContainer(string base64)
+        {
+            BinaryData = Convert.FromBase64String(base64);
+        }
+
+        /// <summary>
+        /// Gets the binary data encoded as a base-64 digit string.
+        /// </summary>
+        /// <value>The base64 value.</value>
+        public string Base64Value => Convert.ToBase64String(BinaryData);
 
         /// <summary>
         /// Gets or sets the binary serialization data.
