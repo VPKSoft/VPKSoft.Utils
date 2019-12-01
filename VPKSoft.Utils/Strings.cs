@@ -27,8 +27,6 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VPKSoft.Utils
 {
@@ -47,7 +45,6 @@ namespace VPKSoft.Utils
         /// <returns>A string with trimmed from the end.</returns>
         public static string TrimEndCount(this string str, char trimChar, int count = 1)
         {
-            List<char> usedTrimChars = new List<char>();
             while (count > 0 && !string.IsNullOrEmpty(str))
             {
                 if (str[str.Length - 1] == trimChar)
@@ -69,7 +66,6 @@ namespace VPKSoft.Utils
         /// <returns>A string with trimmed from the start.</returns>
         public static string TrimStartCount(this string str, char trimChar, int count = 1)
         {
-            List<char> usedTrimChars = new List<char>();
             while (count > 0 && !string.IsNullOrEmpty(str))
             {
                 if (str[0] == trimChar)
@@ -82,65 +78,147 @@ namespace VPKSoft.Utils
         }
 
         /// <summary>
-        /// Counts the occurences of a char in the string.
+        /// Counts the occurrences of a char in the string.
         /// </summary>
         /// <param name="str">A string instance.</param>
-        /// <param name="occurence">The character of which occurences to count.</param>
-        /// <returns>A number of occurences in the string.</returns>
+        /// <param name="occurence">The character of which occurrences to count.</param>
+        /// <returns>A number of occurrences in the string.</returns>
         public static int Count(this string str, char occurence)
         {
             return str.Count(f => f == occurence);
         }
 
         /// <summary>
-        /// Counts the occurences of a string in the string.
+        /// Counts the occurrences of a string in the string.
         /// </summary>
         /// <param name="str">A string instance.</param>
-        /// <param name="occurence">The string if which occurences to count.</param>
-        /// <returns>A number of occurences in the string.</returns>
-        public static int Count(this string str, string occurence)
+        /// <param name="occurrence">The string if which occurrences to count.</param>
+        /// <returns>A number of occurrences in the string.</returns>
+        public static int Count(this string str, string occurrence)
         {
-            return str.Split(new string[] { occurence }, StringSplitOptions.None).Length;
+            return str.Split(new[] { occurrence }, StringSplitOptions.None).Length;
         }
 
         /// <summary>
-        /// Gets the positions of a character occurences in a string.
+        /// Gets the positions of a character occurrences in a string.
         /// </summary>
         /// <param name="str">A string instance.</param>
         /// <param name="occurence">The character of which positions to locate in the string.</param>
         /// <returns>A list of positions the occurence was in the string.</returns>
         public static List<int> Pos(this string str, char occurence)
         {
-            List<int> retval = new List<int>();
+            List<int> result = new List<int>();
 
             int index = 0;
             while ((index = str.IndexOf(occurence, index)) != -1)
             {
-                retval.Add(index);
+                result.Add(index);
                 index++;
             }
             
-            return retval;
+            return result;
         }
 
         /// <summary>
-        /// Gets the positions of a string occurences in a string.
+        /// Gets the positions of a string occurrences in a string.
         /// </summary>
         /// <param name="str">A string instance.</param>
         /// <param name="occurence">The string of which positions to locate in the string.</param>
         /// <returns>A list of positions the occurence was in the string.</returns>
         public static List<int> Pos(this string str, string occurence)
         {
-            List<int> retval = new List<int>();
+            List<int> result = new List<int>();
 
             int index = 0;
-            while ((index = str.IndexOf(occurence, index)) != -1)
+            while ((index = str.IndexOf(occurence, index, StringComparison.Ordinal)) != -1)
             {
-                retval.Add(index);
+                result.Add(index);
                 index++;
             }
 
-            return retval;
+            return result;
+        }
+
+        /// <summary>
+        /// Gets a value whether the string matches the given object array string representation. I.e SQL IN.
+        /// </summary>
+        /// <param name="str">A string instance.</param>
+        /// <param name="values">The values to check for equality with the string instance.</param>
+        /// <returns><c>true</c> if the string matches one of the given object string representations, <c>false</c> otherwise.</returns>
+        public static bool In(this string str, params object[] values)
+        {
+            return In(str, StringComparison.Ordinal, values);
+        }
+
+        /// <summary>
+        /// Gets a value whether the string matches the given object array string representation. I.e SQL IN.
+        /// </summary>
+        /// <param name="str">A string instance.</param>
+        /// <param name="comparisonType">One of the enumeration values that specifies the rules for the comparison.</param>
+        /// <param name="values">The values to check for equality with the string instance.</param>
+        /// <returns><c>true</c> if the string matches one of the given object string representations, <c>false</c> otherwise.</returns>
+        public static bool In(this string str, StringComparison comparisonType, params object [] values)
+        {
+            if (values.Length == 0)
+            {
+                return false;
+            }
+
+            foreach (var value in values)
+            {
+                if (value == null)
+                {
+                    continue;
+                }
+
+                if (string.Equals(str, value.ToString(), comparisonType))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Gets a value whether the string part matches the given object array string representation. I.e SQL IN.
+        /// </summary>
+        /// <param name="str">A string instance.</param>
+        /// <param name="comparisonType">One of the enumeration values that specifies the rules for the comparison.</param>
+        /// <param name="values">The values to check for partly equality with the string instance.</param>
+        /// <returns><c>true</c> if the part of the string matches one of the given object string representations, <c>false</c> otherwise.</returns>
+        public static bool InPart(this string str, StringComparison comparisonType, params object[] values)
+        {
+            if (values.Length == 0)
+            {
+                return false;
+            }
+
+            foreach (var value in values)
+            {
+                if (value == null)
+                {
+                    continue;
+                }
+
+                if (str.IndexOf(value.ToString(), comparisonType) != -1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Gets a value whether the string part matches the given object array string representation. I.e SQL IN.
+        /// </summary>
+        /// <param name="str">A string instance.</param>
+        /// <param name="values">The values to check for partly equality with the string instance.</param>
+        /// <returns><c>true</c> if the part of the string matches one of the given object string representations, <c>false</c> otherwise.</returns>
+        public static bool InPart(this string str, params object[] values)
+        {
+            return InPart(str, StringComparison.Ordinal, values);
         }
 
     }
