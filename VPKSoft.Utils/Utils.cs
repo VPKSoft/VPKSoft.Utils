@@ -24,19 +24,6 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using System.Windows;
-using System.Threading;
-using System.Xaml;
-
-
-
 namespace VPKSoft.Utils
 {
     /// <summary>

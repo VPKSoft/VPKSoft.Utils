@@ -62,6 +62,7 @@
     <Compile Include="DBUtils.cs" />
     <Compile Include="FileEnumerator.cs" />
     <Compile Include="HumanActivity.cs" />
+    <Compile Include="IOHash.cs" />
     <Compile Include="MainAppInfo.cs" />
     <Compile Include="Messaging.cs" />
     <Compile Include="Misc.cs" />
