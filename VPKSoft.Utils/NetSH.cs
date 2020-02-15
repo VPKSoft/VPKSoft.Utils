@@ -3,7 +3,7 @@
 VPKSoft.Utils
 
 Some utilities by VPKSoft.
-Copyright (C) 2018 VPKSoft, Petteri Kautonen
+Copyright © 2020 VPKSoft, Petteri Kautonen
 
 Contact: vpksoft@vpksoft.net
 
@@ -25,10 +25,6 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace VPKSoft.Utils

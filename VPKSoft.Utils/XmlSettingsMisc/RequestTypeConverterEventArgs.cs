@@ -24,44 +24,31 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
-namespace VPKSoft.Utils
+using System;
+using System.ComponentModel;
+
+namespace VPKSoft.Utils.XmlSettingsMisc
 {
     /// <summary>
-    /// Utilities by VPKSoft.
+    /// Class RequestTypeConverterEventArgs.
+    /// Implements the <see cref="System.EventArgs" />
     /// </summary>
-    public static class Utils
+    /// <seealso cref="System.EventArgs" />
+    public class RequestTypeConverterEventArgs: EventArgs
     {
         /// <summary>
-        /// True if the application is a ASP.NET application.
+        /// Gets or sets the name of the setting.
         /// </summary>
-        public static bool ASP
-        {
-            get
-            {
-                return System.Web.HttpContext.Current == null;
-            }
-        }
+        public string SettingName { get; set; }
 
         /// <summary>
-        /// True if the application is a Windows Forms Application
+        /// Gets or sets the type to request a type converter for.
         /// </summary>
-        public static bool WinForms
-        {
-            get
-            {
-                return System.Windows.Forms.Application.OpenForms.Count == 0;
-            }
-        }
+        public Type TypeToConvert { get; set; }
 
         /// <summary>
-        /// True if the application is a Windows Presentation Foundation application
+        /// Gets or sets the type converter for the setting.
         /// </summary>
-        public static bool WPF
-        {
-            get
-            {
-                return System.Windows.Application.Current != null;
-            }
-        }
+        public TypeConverter TypeConverter { get; set; }
     }
 }

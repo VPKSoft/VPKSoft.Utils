@@ -76,7 +76,14 @@
     <Compile Include="Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VPKNml.cs" />
+    <Compile Include="XmlSettings.cs" />
+    <Compile Include="XmlSettingsMisc\IsSetting.cs" />
+    <Compile Include="XmlSettingsMisc\PathHandler.cs" />
+    <Compile Include="XmlSettingsMisc\RequestDecryptionEventArgs.cs" />
+    <Compile Include="XmlSettingsMisc\RequestEncryptionEventArgs.cs" />
+    <Compile Include="XmlSettingsMisc\RequestTypeConverterEventArgs.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

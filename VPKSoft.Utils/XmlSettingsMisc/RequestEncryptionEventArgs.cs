@@ -24,44 +24,25 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
-namespace VPKSoft.Utils
+using System;
+
+namespace VPKSoft.Utils.XmlSettingsMisc
 {
     /// <summary>
-    /// Utilities by VPKSoft.
+    /// Event arguments for the <see cref="XmlSettings.RequestEncryption"/> event.
+    /// Implements the <see cref="System.EventArgs" />
     /// </summary>
-    public static class Utils
+    /// <seealso cref="System.EventArgs" />
+    public class RequestEncryptionEventArgs: EventArgs
     {
         /// <summary>
-        /// True if the application is a ASP.NET application.
+        /// Gets or sets the name of the setting.
         /// </summary>
-        public static bool ASP
-        {
-            get
-            {
-                return System.Web.HttpContext.Current == null;
-            }
-        }
+        public string SettingName { get; set; }
 
         /// <summary>
-        /// True if the application is a Windows Forms Application
+        /// Gets or sets the value of the setting to be encrypted and encoded to a base64 encoding.
         /// </summary>
-        public static bool WinForms
-        {
-            get
-            {
-                return System.Windows.Forms.Application.OpenForms.Count == 0;
-            }
-        }
-
-        /// <summary>
-        /// True if the application is a Windows Presentation Foundation application
-        /// </summary>
-        public static bool WPF
-        {
-            get
-            {
-                return System.Windows.Application.Current != null;
-            }
-        }
+        public string Value { get; set; }
     }
 }

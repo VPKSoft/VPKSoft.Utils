@@ -9,8 +9,8 @@
     <projectUrl>https://www.vpksoft.net/2015-03-31-13-33-28/libraries/vpksoft-utils</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added IoHash class to help with MD5 hash calculation.</releaseNotes>
-    <copyright>Copyright © VPKSoft 2019</copyright>
+    <releaseNotes>Added XmlSettings class.</releaseNotes>
+    <copyright>Copyright © VPKSoft 2020</copyright>
     <tags>Utilities VPKSoft vnml serialization helper</tags>
     <license type="expression">LGPL-3.0-or-later</license>
     <icon>vpksoft_logo.png</icon>

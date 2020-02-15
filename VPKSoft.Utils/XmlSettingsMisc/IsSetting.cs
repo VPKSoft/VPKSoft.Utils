@@ -24,44 +24,26 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
-namespace VPKSoft.Utils
+using System;
+
+namespace VPKSoft.Utils.XmlSettingsMisc
 {
     /// <summary>
-    /// Utilities by VPKSoft.
+    /// An attribute to mark a setting property.
+    /// Implements the <see cref="System.Attribute" />
     /// </summary>
-    public static class Utils
+    /// <seealso cref="System.Attribute" />
+    [AttributeUsage(AttributeTargets.Property)]
+    public class IsSetting : Attribute
     {
         /// <summary>
-        /// True if the application is a ASP.NET application.
+        /// Gets or sets a value whether to request encryption for the property value.
         /// </summary>
-        public static bool ASP
-        {
-            get
-            {
-                return System.Web.HttpContext.Current == null;
-            }
-        }
+        public bool Secure { get; set; }
 
         /// <summary>
-        /// True if the application is a Windows Forms Application
+        /// Gets or sets the default value of the setting.
         /// </summary>
-        public static bool WinForms
-        {
-            get
-            {
-                return System.Windows.Forms.Application.OpenForms.Count == 0;
-            }
-        }
-
-        /// <summary>
-        /// True if the application is a Windows Presentation Foundation application
-        /// </summary>
-        public static bool WPF
-        {
-            get
-            {
-                return System.Windows.Application.Current != null;
-            }
-        }
+        public object DefaultValue { get; set; }
     }
 }

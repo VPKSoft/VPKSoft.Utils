@@ -3,7 +3,7 @@
 VPKSoft.Utils
 
 Some utilities by VPKSoft.
-Copyright (C) 2015 VPKSoft, Petteri Kautonen
+Copyright © 2020 VPKSoft, Petteri Kautonen
 
 Contact: vpksoft@vpksoft.net
 
