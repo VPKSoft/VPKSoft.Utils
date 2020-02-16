@@ -105,6 +105,10 @@ namespace VPKSoft.Utils
                     {
                         currentValue = isSettingAttribute.DefaultValue;
                     }
+                    else if (isSettingAttribute.DefaultValue != GetDefaultValue(type))
+                    {
+                        currentValue = isSettingAttribute.DefaultValue;
+                    }
 
                     // set the value for the property..
                     propertyInfo.SetValue(this, currentValue);
@@ -117,6 +121,23 @@ namespace VPKSoft.Utils
             }
 
             return document;
+        }
+
+        /// <summary>
+        /// Get a default value of a given <see cref="Type"/> value.
+        /// </summary>
+        /// <param name="type">The <see cref="Type"/> of which default value to get.</param>
+        /// <returns>The default value of a given <see cref="Type"/>.</returns>
+        private static object GetDefaultValue(Type type)
+        {
+            try
+            {
+                return type.IsValueType ? Activator.CreateInstance(type) : null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         /// <summary>
