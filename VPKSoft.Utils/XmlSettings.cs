@@ -25,6 +25,7 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
@@ -110,6 +111,11 @@ namespace VPKSoft.Utils
                         currentValue = isSettingAttribute.DefaultValue;
                     }
 
+                    if (!DefaultValuesSet.Contains(propertyInfo.Name))
+                    {
+                        DefaultValuesSet.Add(propertyInfo.Name);
+                    }
+
                     // set the value for the property..
                     propertyInfo.SetValue(this, currentValue);
                 }
@@ -182,6 +188,9 @@ namespace VPKSoft.Utils
             return document;
         }
 
+        // a list containing the settings the default value has already been set..
+        private List<string> DefaultValuesSet { get; set; } = new List<string>();
+
         /// <summary>
         /// Saves the settings to a <see cref="XDocument"/> instance.
         /// </summary>
@@ -215,13 +224,21 @@ namespace VPKSoft.Utils
                     {
                         continue;
                     }
+
+                    var type = propertyInfo.PropertyType;
                     
-                    if (isSettingAttribute.DefaultValue != null)
+                    if (!DefaultValuesSet.Contains(propertyInfo.Name) && 
+                        isSettingAttribute.DefaultValue != null && 
+                        isSettingAttribute.DefaultValue != GetDefaultValue(type) && 
+                        GetDefaultValue(type) != currentValue)
                     {
                         currentValue = isSettingAttribute.DefaultValue;
                     }
 
-                    var type = propertyInfo.PropertyType;
+                    if (!DefaultValuesSet.Contains(propertyInfo.Name))
+                    {
+                        DefaultValuesSet.Add(propertyInfo.Name);
+                    }
 
                     string value = null;
 

@@ -9,7 +9,7 @@
     <projectUrl>https://www.vpksoft.net/2015-03-31-13-33-28/libraries/vpksoft-utils</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added XmlSettings class. Fixed the IsSetting.DefaultValue attribute property value.</releaseNotes>
+    <releaseNotes>Added XmlSettings class. Fixed the IsSetting.DefaultValue attribute property value rev.2.</releaseNotes>
     <copyright>Copyright © VPKSoft 2020</copyright>
     <tags>Utilities VPKSoft vnml serialization helper</tags>
     <license type="expression">LGPL-3.0-or-later</license>
