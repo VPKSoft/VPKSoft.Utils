@@ -59,6 +59,7 @@
     <Compile Include="BuiltInWindowsAccountsLocalize.cs" />
     <Compile Include="Bytes.cs" />
     <Compile Include="ClArgs.cs" />
+    <Compile Include="IpcClientServer.cs" />
     <Compile Include="DBUtils.cs" />
     <Compile Include="FileEnumerator.cs" />
     <Compile Include="HumanActivity.cs" />
