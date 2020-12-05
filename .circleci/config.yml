@@ -22,5 +22,5 @@
           name: Push to NuGet
           command: |
             dotnet pack VPKSoft.Utils/VPKSoft.Utils.csproj -c:Release
-            VPKSoft.Utils/NuGet-Push.ps1
+            ./NuGet-Push.ps1
             
