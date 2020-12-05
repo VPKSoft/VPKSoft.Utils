@@ -12,8 +12,8 @@
     <DocumentationFile>bin\$(Configuration)\VPKSoft.Utils.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>VPKSoft</Authors>
-    <PackageProjectUrl>https://www.nuget.org/packages/VPKSoft.Utils/</PackageProjectUrl>
-    <PackageReleaseNotes>See: https://www.nuget.org/packages/VPKSoft.Utils/</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/VPKSoft/VPKSoft.Utils</PackageProjectUrl>
+    <PackageReleaseNotes>See: https://github.com/VPKSoft/VPKSoft.Utils</PackageReleaseNotes>
     <PackageTags>Utilities VPKSoft vnml serialization helper</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PostBuildEvent />
@@ -32,7 +32,7 @@
   <PropertyGroup>
     <PostBuildEvent />
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <RepositoryUrl>https://www.nuget.org/packages/VPKSoft.Utils/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/VPKSoft/VPKSoft.Utils</RepositoryUrl>
     <PackageIcon>vpksoft_logo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
