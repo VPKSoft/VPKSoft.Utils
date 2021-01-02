@@ -3,7 +3,7 @@
 VPKSoft.Utils
 
 Some utilities by VPKSoft.
-Copyright © 2020 VPKSoft, Petteri Kautonen
+Copyright © 2021 VPKSoft, Petteri Kautonen
 
 Contact: vpksoft@vpksoft.net
 
@@ -25,16 +25,15 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
 using System;
-using System.ComponentModel;
 
 namespace VPKSoft.Utils.XmlSettingsMisc
 {
     /// <summary>
-    /// Class RequestTypeConverterEventArgs.
+    /// Event arguments for the <see cref="XmlSettings.RequestDecryption"/> event.
     /// Implements the <see cref="System.EventArgs" />
     /// </summary>
     /// <seealso cref="System.EventArgs" />
-    public class RequestTypeConverterEventArgs: EventArgs
+    public class RequestDecryptionEventArgs: EventArgs
     {
         /// <summary>
         /// Gets or sets the name of the setting.
@@ -42,13 +41,8 @@ namespace VPKSoft.Utils.XmlSettingsMisc
         public string SettingName { get; set; }
 
         /// <summary>
-        /// Gets or sets the type to request a type converter for.
+        /// Gets or sets the value of the setting to be decrypted from base64 encoded encrypted value.
         /// </summary>
-        public Type TypeToConvert { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type converter for the setting.
-        /// </summary>
-        public TypeConverter TypeConverter { get; set; }
+        public string Value { get; set; }
     }
 }

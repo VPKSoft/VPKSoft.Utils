@@ -3,7 +3,7 @@
 VPKSoft.Utils
 
 Some utilities by VPKSoft.
-Copyright © 2020 VPKSoft, Petteri Kautonen
+Copyright © 2021 VPKSoft, Petteri Kautonen
 
 Contact: vpksoft@vpksoft.net
 
@@ -29,11 +29,11 @@ using System;
 namespace VPKSoft.Utils.XmlSettingsMisc
 {
     /// <summary>
-    /// Event arguments for the <see cref="XmlSettings.RequestDecryption"/> event.
+    /// Event arguments for the <see cref="XmlSettings.RequestEncryption"/> event.
     /// Implements the <see cref="System.EventArgs" />
     /// </summary>
     /// <seealso cref="System.EventArgs" />
-    public class RequestDecryptionEventArgs: EventArgs
+    public class RequestEncryptionEventArgs: EventArgs
     {
         /// <summary>
         /// Gets or sets the name of the setting.
@@ -41,7 +41,7 @@ namespace VPKSoft.Utils.XmlSettingsMisc
         public string SettingName { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the setting to be decrypted from base64 encoded encrypted value.
+        /// Gets or sets the value of the setting to be encrypted and encoded to a base64 encoding.
         /// </summary>
         public string Value { get; set; }
     }

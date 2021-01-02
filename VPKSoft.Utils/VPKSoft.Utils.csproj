@@ -5,10 +5,10 @@
     <Company>VPKSoft</Company>
     <Product>VPKSoft.Utils</Product>
     <Description>Some utilities by VPKSoft.</Description>
-    <Copyright>Copyright © VPKSoft 2020</Copyright>
-    <Version>1.0.5</Version>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
-    <FileVersion>1.0.5.0</FileVersion>
+    <Copyright>Copyright © VPKSoft 2021</Copyright>
+    <Version>1.0.6</Version>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
     <DocumentationFile>bin\$(Configuration)\VPKSoft.Utils.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>VPKSoft</Authors>
