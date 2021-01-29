@@ -102,11 +102,7 @@ namespace VPKSoft.Utils
                             }
                         }
                     }
-                    else if (currentValue == null)
-                    {
-                        currentValue = isSettingAttribute.DefaultValue;
-                    }
-                    else if (isSettingAttribute.DefaultValue != GetDefaultValue(type))
+                    else if (isSettingAttribute.HasDefaultValue && isSettingAttribute.DefaultValue != GetDefaultValue(type))
                     {
                         currentValue = isSettingAttribute.DefaultValue;
                     }
@@ -138,6 +134,11 @@ namespace VPKSoft.Utils
         {
             try
             {
+                if (Nullable.GetUnderlyingType(type) != null)
+                {
+                    return null;
+                }
+                
                 return type.IsValueType ? Activator.CreateInstance(type) : null;
             }
             catch
@@ -266,7 +267,8 @@ namespace VPKSoft.Utils
                         value = args.Value;
                     }
 
-                    var settingElement = new XElement("setting", new XAttribute(propertyInfo.Name, value),
+                    var settingElement = new XElement("setting", 
+                        new XAttribute(propertyInfo.Name, value),
                         new XAttribute("secure", isSettingAttribute.Secure ? "1" : "0"));
 
                     settingsElement.Add(settingElement);

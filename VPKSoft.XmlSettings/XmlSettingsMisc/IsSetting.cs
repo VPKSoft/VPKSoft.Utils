@@ -42,8 +42,25 @@ namespace VPKSoft.Utils.XmlSettingsMisc
         public bool Secure { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this instance has a specified default value.
+        /// </summary>
+        /// <value><c>true</c> if this instance has a specified default value; otherwise, <c>false</c>.</value>
+        internal bool HasDefaultValue { get; set; }
+
+        private object defaultValue;
+
+        /// <summary>
         /// Gets or sets the default value of the setting.
         /// </summary>
-        public object DefaultValue { get; set; }
+        public object DefaultValue
+        {
+            get => defaultValue;
+
+            set
+            {
+                defaultValue = value;
+                HasDefaultValue = true;
+            }
+        }
     }
 }
