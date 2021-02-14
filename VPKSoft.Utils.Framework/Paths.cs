@@ -25,20 +25,33 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
 using System.IO;
+using System.Reflection;
 
-namespace VPKSoft.Utils
+namespace VPKSoft.Utils.Framework
 {
     /// <summary>
     /// Some path utilities related to an "application".
     /// </summary>
     public class Paths
     {
+        /// <summary>
+        /// Just returns the default writable data directory for "non-roaming" applications.
+        /// </summary>
+        /// <returns>A writable data directory for "non-roaming" applications.</returns>
+        public static string GetAppSettingsFolder()
+        {
+            if (!Utils.WPF)
+            {
+                return GetAppSettingsFolder(Misc.AppType.Winforms);
+            }
+            else
+            {
+                return GetAppSettingsFolder(Misc.AppType.WPF);
+            }
+        }
+
+
         /// <summary>
         /// Just returns the default writable data directory for "non-roaming" applications.
         /// </summary>
@@ -78,6 +91,19 @@ namespace VPKSoft.Utils
                 // nice to throw something :-)
                 throw new TypeInitializationException("Invalid application type.", new Exception());
             }
+        }
+
+        /// <summary>
+        /// Generates and returns the default writable data directory for "non-roaming" applications.
+        /// </summary>
+        /// <returns>A writable data directory for "non-roaming" applications.</returns>
+        public static string MakeAppSettingsFolder()
+        {
+            if (!Directory.Exists(GetAppSettingsFolder()))
+            {
+                Directory.CreateDirectory(GetAppSettingsFolder());
+            }
+            return GetAppSettingsFolder();
         }
 
         /// <summary>

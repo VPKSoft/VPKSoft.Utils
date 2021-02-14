@@ -24,7 +24,7 @@ along with VPKSoft.Utils.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
 
-namespace VPKSoft.Utils
+namespace VPKSoft.Utils.Framework
 {
     /// <summary>
     /// Utilities by VPKSoft.
