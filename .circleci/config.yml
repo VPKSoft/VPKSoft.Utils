@@ -17,6 +17,12 @@
        - checkout
        - run: msbuild VPKSoft.Utils/VPKSoft.Utils.csproj /t:restore
        - run: msbuild VPKSoft.Utils/VPKSoft.Utils.csproj /p:Configuration=Release
+       
+       - run: msbuild VPKSoft.Utils.Framework/VPKSoft.Utils.Framework.csproj /t:restore
+       - run: msbuild VPKSoft.Utils.Framework/VPKSoft.Utils.Framework.csproj /p:Configuration=Release
+       
+       - run: msbuild VPKSoft.XmlSettings/VPKSoft.XmlSettings.csproj /t:restore
+       - run: msbuild VPKSoft.XmlSettings/VPKSoft.XmlSettings.csproj /p:Configuration=Release
 # No need for bleeding edge       - run: dotnet tool install --global PowerShell
        - run: 
           name: Push to NuGet
