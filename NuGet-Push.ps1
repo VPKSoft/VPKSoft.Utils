@@ -64,7 +64,7 @@ if ([string]::IsNullOrEmpty($Env:CIRCLE_PR_NUMBER)) # dont push on PR's..
         $arguments = @("sign", $file, "-CertificatePath", "C:\vpksoft.pfx", "-Timestamper", "http://timestamp.comodoca.com", "-CertificatePassword", $Env:PFX_PASS)
 
         Retry-Command -ScriptBlock {
-            nuget.exe $arguments > null 2>&1
+            nuget.exe $arguments
         } -TimeoutInSecs 10 -Verbose -RetryCount 10
 
 	    Write-Output (-join("Package signed: ", $file, "."))
