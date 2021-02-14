@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BDA7C7B-E7C7-415A-AEDB-579BCA238AA5}"
 	ProjectSection(SolutionItems) = preProject
 		NuGet-Push.ps1 = NuGet-Push.ps1
+		Retry-Command.ps1 = Retry-Command.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPKSoft.XmlSettings", "VPKSoft.XmlSettings\VPKSoft.XmlSettings.csproj", "{F543C7BA-C654-4C51-8B55-D5D6AEC0B9DB}"
