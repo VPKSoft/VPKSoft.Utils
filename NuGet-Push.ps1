@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 #>
 
+Import-Module Retry-Command
+
 Write-Output "Init NuGet push..."
 
 $output_file = ".\CryptEnvVar.exe"
