@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 #>
 
-Import-Module Retry-Command
+. .\Retry-Command.ps1
 
 Write-Output "Init NuGet push..."
 
